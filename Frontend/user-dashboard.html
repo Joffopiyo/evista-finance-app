@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Evista Finance</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .stat-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .card-income {
+            border-left: 4px solid #4CAF50;
+        }
+        .card-expense {
+            border-left: 4px solid #F44336;
+        }
+        .card-savings {
+            border-left: 4px solid #2196F3;
+        }
+        .card-progress {
+            border-left: 4px solid #FF9800;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-piggy-bank me-2"></i>Evista Finance
+            </a>
+            <div class="navbar-nav ms-auto">
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <span id="userEmail"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/user-dashboard">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="/budget">Budget</a></li>
+                        <li><a class="dropdown-item" href="/courses">Courses</a></li>
+                        <li><a class="dropdown-item" href="/reports">Reports</a></li>
+                        <li id="adminLink" style="display: none;"><a class="dropdown-item" href="/admin-dashboard">Admin</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="mb-4">Financial Dashboard</h1>
+
+        <!-- Summary Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3 mb-3">
+                <div class="card stat-card card-income h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title text-muted">Total Income</h6>
+                                <h3 id="incomeValue" class="text-success">$0.00</h3>
+                            </div>
+                            <i class="fas fa-money-bill-wave fa-2x text-success"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card stat-card card-expense h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title text-muted">Total Expenses</h6>
+                                <h3 id="expensesValue" class="text-danger">$0.00</h3>
+                            </div>
+                            <i class="fas fa-shopping-cart fa-2x text-danger"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card stat-card card-savings h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title text-muted">Net Savings</h6>
+                                <h3 id="savingsValue" class="text-primary">$0.00</h3>
+                            </div>
+                            <i class="fas fa-piggy-bank fa-2x text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card stat-card card-progress h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title text-muted">Course Progress</h6>
+                                <h3 id="courseProgress" class="text-warning">0%</h3>
+                            </div>
+                            <i class="fas fa-graduation-cap fa-2x text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Chart Section -->
+            <div class="col-md-8 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Income vs Expenses</h5>
+                    </div>
+                    <div class="card-body">
+                        <div style="height: 300px;">
+                            <canvas id="financeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Quick Actions</h5>
+                    </div>
+                    <div class="card-body">
+                        <a href="/budget" class="btn btn-primary w-100 mb-2" id="budgetLink">
+                            <i class="fas fa-wallet me-2"></i>Manage Budget
+                        </a>
+                        <button class="btn btn-outline-secondary w-100 mb-2">
+                            <i class="fas fa-book me-2"></i>View Courses
+                        </button>
+                        <button class="btn btn-outline-secondary w-100">
+                            <i class="fas fa-chart-bar me-2"></i>View Reports
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Courses -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Your Courses</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="coursesContainer">
+                            <!-- Courses will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
