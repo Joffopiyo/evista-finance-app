@@ -23,11 +23,17 @@ A comprehensive full-stack financial literacy application designed to help users
 
 ## ✨ Features
 
-### 🔐 Authentication & Authorization
-- Secure user registration and login
-- JWT-based authentication
-- Role-based access control (User & Admin)
-- Password hashing with bcrypt
+- User Authentication - Secure JWT-based login/signup
+
+- Budget Management - Track income and expenses
+
+- Financial Analytics - Visual charts and reports
+
+- Course System - Financial literacy courses
+
+- Admin Dashboard - User management
+
+- Responsive Design - Works on all devices
 
 ### 💵 Budget Management
 - **Income Tracking**: Record and monitor all income sources
@@ -94,8 +100,8 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd "Financial Literacy app"
+git clone https://github.com/Joffopiyo/evista-finance-app.git
+cd evista-finance-app
 ```
 
 ### 2. Install Dependencies
