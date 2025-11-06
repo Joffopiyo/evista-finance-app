@@ -7,7 +7,8 @@
     "start": "node backend/server.js",
     "dev": "nodemon backend/server.js",
     "seed": "node backend/utils/seed.js",
-    "test": "echo \"No tests specified\" && exit 0"
+    "seed:safe": "echo 'This command no longer creates default users. Use signup page instead.'",
+    "setup:admin": "echo 'Run this in production: Create admin account through web interface'"
   },
   "dependencies": {
     "express": "^4.18.2",

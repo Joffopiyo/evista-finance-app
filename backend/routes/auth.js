@@ -17,6 +17,15 @@ router.post('/signup', signupValidation, async (req, res) => {
       return res.status(409).json({ error: 'User already exists with this email', code: 409 });
     }
 
+    // In the signup route, after user creation:
+// Make first user admin automatically
+const userCount = await User.countDocuments();
+if (userCount === 1) {
+  user.role = 'admin';
+  await user.save();
+  console.log('First user automatically assigned admin role:', user.email);
+}
+
     const passwordHash = await bcrypt.hash(password, 10);
     const user = new User({ email, passwordHash });
     await user.save();
