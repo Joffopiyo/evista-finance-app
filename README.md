@@ -251,7 +251,7 @@ The application will be available at:
 ### MongoDB Connection
 
 The application connects to MongoDB using the connection string from your `.env` file. By default, it connects to:
-- **Local**: `mongodb://localhost:27017/evista`
+- **Local**: `mongodb://localhost:27017/your_database_name`
 
 To use MongoDB Atlas (cloud):
 1. Create an account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)

@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const seedData = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/evista');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/your_database_name');
 
     console.log('Seeding database with courses only...');
 
