@@ -2,6 +2,9 @@
 
 A comprehensive full-stack financial literacy application designed to help users master personal finance, budgeting, and investment through interactive courses and tools. Aligned with Sustainable Development Goals (SDG), this application promotes financial inclusion and education.
 
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Node](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen.svg)
 
 ## 📋 Table of Contents
 
@@ -119,7 +122,7 @@ NODE_ENV=development
 # MongoDB Configuration
 MONGODB_URI=mongodb://localhost:27017/evista
 # OR for MongoDB Atlas:
-# MONGODB_URI=
+# MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/evista
 
 # JWT Configuration
 JWT_SECRET=your_super_secret_jwt_key_here_change_in_production

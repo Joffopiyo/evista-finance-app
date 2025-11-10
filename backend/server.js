@@ -117,9 +117,17 @@ app.use((error, req, res, next) => {
   res.status(500).json({ error: 'Internal server error', code: 500 });
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Frontend: http://localhost:${PORT}`);
   console.log(`API: http://localhost:${PORT}/api`);
   console.log('WASM MIME types configured');
+}).on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`Port ${PORT} is already in use. Please try a different port or close the application using this port.`);
+    process.exit(1);
+  } else {
+    console.error('Server error:', err);
+    process.exit(1);
+  }
 });
