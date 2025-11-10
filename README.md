@@ -1,10 +1,11 @@
 # 💰 Evista Finance - SDG Financial Literacy App
 
-A comprehensive full-stack financial literacy application designed to help users master personal finance, budgeting, and investment through interactive courses and tools. Aligned with Sustainable Development Goals (SDG), this application promotes financial inclusion and education.
+A comprehensive full-stack financial literacy application designed to help users master personal finance, budgeting, and investment through interactive courses and tools. Aligned with Sustainable Development Goals (SDG), particularly SDG 1 (No Poverty) and SDG 4 (Quality Education), this application promotes financial inclusion and education.
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Node](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen.svg)
+![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)
+![MongoDB](https://img.shields.io/badge/MongoDB-4.4+-green.svg)
 
 ## 📋 Table of Contents
 
@@ -47,6 +48,18 @@ A comprehensive full-stack financial literacy application designed to help users
 - Course progress tracking
 - Featured courses on homepage
 - SDG-aligned content
+- Interactive learning modules
+- Real-world case studies
+- Practical exercises and assessments
+
+### 🔒 Security Implementation
+- JWT-based authentication
+- Password hashing with bcrypt
+- Rate limiting for API endpoints
+- Input validation and sanitization
+- CORS protection
+- Secure HTTP headers with Helmet
+- MongoDB injection protection
 
 ### 📊 Analytics Dashboard
 - User dashboard with financial overview
@@ -54,12 +67,20 @@ A comprehensive full-stack financial literacy application designed to help users
 - Transaction analytics and insights
 - Budget performance metrics
 
-### 🛡️ Security
+### 🛡️ Security Best Practices
 - Helmet.js for HTTP headers security
 - Rate limiting to prevent abuse
 - Input validation and sanitization
-- CORS configuration
-- Secure password storage
+- CORS configuration with strict origin policies
+- Secure password storage using bcrypt
+- JWT token management with appropriate expiration
+- Environment variable protection
+- MongoDB injection prevention
+- XSS protection
+- CSRF protection
+- Regular security updates and dependency audits
+- Secure session management
+- Error handling without exposure of sensitive details
 
 ## 🛠️ Tech Stack
 
@@ -85,6 +106,49 @@ A comprehensive full-stack financial literacy application designed to help users
 
 ### Development Tools
 - **nodemon** - Development server with auto-reload
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **Git** - Version control
+
+## 🚀 Installation & Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Joffopiyo/evista-finance-app.git
+   cd evista-finance-app
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup**
+   Create a `.env` file in the root directory with these variables:
+   ```env
+   # Server Configuration
+   PORT=4000
+   NODE_ENV=development
+
+   # Database Configuration
+   MONGODB_URI=your_mongodb_connection_string
+
+   # Security
+   JWT_SECRET=your_secure_jwt_secret
+   JWT_EXPIRE=24h
+   RATE_LIMIT_WINDOW=15
+   RATE_LIMIT_MAX=100
+   ```
+   ⚠️ Note: Never commit the `.env` file or expose these secrets
+
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Access the application**
+   - Frontend: http://localhost:4000
+   - API: http://localhost:4000/api
 
 ## 📦 Prerequisites
 
@@ -112,27 +176,31 @@ npm install
 
 ### 3. Set Up Environment Variables
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the root directory. Required variables include:
 
 ```env
 # Server Configuration
-PORT=4000
-NODE_ENV=development
+PORT=<port_number>
+NODE_ENV=<development|production>
 
 # MongoDB Configuration
-MONGODB_URI=mongodb://localhost:27017/evista
-# OR for MongoDB Atlas:
-# MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/evista
+MONGODB_URI=<your_mongodb_connection_string>
 
-# JWT Configuration
-JWT_SECRET=your_super_secret_jwt_key_here_change_in_production
-JWT_EXPIRE=7d
+# Security Configuration
+JWT_SECRET=<your_secure_random_key>
+JWT_EXPIRE=<token_expiry_time>
 
-# Frontend URL (for CORS)
-FRONTEND_URL=http://localhost:4000
+# API Configuration
+FRONTEND_URL=<your_frontend_url>
 ```
 
-**⚠️ Important**: Replace `your_super_secret_jwt_key_here_change_in_production` with a strong, random secret key in production.
+**⚠️ Security Warnings:**
+- Never commit the `.env` file to version control
+- Use strong, randomly generated secrets for JWT_SECRET
+- Keep your MongoDB connection string private
+- Use environment-specific .env files (.env.development, .env.production)
+- Regularly rotate security keys in production
+- Set appropriate CORS origins in production
 
 ### 4. Start MongoDB
 
