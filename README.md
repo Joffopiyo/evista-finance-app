@@ -17,7 +17,6 @@ A comprehensive full-stack financial literacy application designed to help users
 - [Usage](#-usage)
 - [Project Structure](#-project-structure)
 - [API Endpoints](#-api-endpoints)
-- [Demo Accounts](#-demo-accounts)
 - [Security Features](#-security-features)
 - [Contributing](#-contributing)
 - [License](#-license)
@@ -269,7 +268,7 @@ Change the port by updating `PORT` in your `.env` file. Default is `4000`.
 
 1. **Visit the Homepage**: Navigate to http://localhost:4000
 2. **Register an Account**: Click "Get Started" or "Sign up here"
-3. **Login**: Use your credentials or demo accounts (see below)
+3. **Login**: Use your registered credentials to access the system
 4. **Explore Features**:
    - Access your dashboard
    - Manage your budget
@@ -356,21 +355,25 @@ Financial Literacy app/
 ### Health Check
 - `GET /api/health` - Server health status
 
-## 👤 Demo Accounts
+## 👤 User Roles
 
-The application comes with pre-seeded demo accounts (if you ran `npm run seed`):
+The application supports two types of user roles:
 
-### Admin Account
-- **Email**: `admin@example.com`
-- **Password**: `Admin@123`
-- **Role**: Admin (full system access)
+### Admin Role
+- Full system access
+- User management capabilities
+- Course management
+- Analytics dashboard access
+- System configuration access
 
-### User Account
-- **Email**: `user@example.com`
-- **Password**: `User@123`
-- **Role**: User (standard access)
+### User Role
+- Personal dashboard access
+- Course enrollment and progress tracking
+- Budget management
+- Transaction history
+- Personal analytics
 
-**⚠️ Security Note**: Change these default credentials in production!
+⚠️ **Security Note**: Always use strong passwords and follow security best practices when creating user accounts.
 
 ## 🔒 Security Features
 
