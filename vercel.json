@@ -1,0 +1,14 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "Frontend",
+  "installCommand": "npm install",
+  "env": {
+    "FRONTEND_URL": "@frontend_url"
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://<RENDER_BACKEND_URL>/api/$1"
+    }
+  ]
+}

@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node backend/server.js",
     "dev": "nodemon backend/server.js",
+    "build": "echo 'Frontend is static HTML - served from Frontend directory'",
     "seed": "node backend/utils/seed.js",
     "seed:safe": "echo 'This command no longer creates default users. Use signup page instead.'",
     "setup:admin": "echo 'Run this in production: Create admin account through web interface'"
