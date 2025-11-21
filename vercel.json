@@ -1,33 +1,9 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "frontend",
+  "installCommand": "npm install",
+  "cleanUrls": true,
   "rewrites": [
-    {
-      "source": "/login",
-      "destination": "/login.html"
-    },
-    {
-      "source": "/signup",
-      "destination": "/signup.html"
-    },
-    {
-      "source": "/user-dashboard",
-      "destination": "/user-dashboard.html"
-    },
-    {
-      "source": "/admin-dashboard",
-      "destination": "/admin-dashboard.html"
-    },
-    {
-      "source": "/budget",
-      "destination": "/budget.html"
-    },
-    {
-      "source": "/courses",
-      "destination": "/courses.html"
-    },
-    {
-      "source": "/reports",
-      "destination": "/reports.html"
-    },
     {
       "source": "/api/(.*)",
       "destination": "https://evista-finance-app-backend.onrender.com/api/$1"
