@@ -7,6 +7,12 @@ A comprehensive full-stack financial literacy application designed to help users
 ![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4.4+-green.svg)
 
+## 🌐 Live Deployment
+
+- **Frontend**: [https://financial-literacy-ds7js8mw6-joffopiyos-projects.vercel.app](https://financial-literacy-ds7js8mw6-joffopiyos-projects.vercel.app)
+- **Backend API**: [https://evista-finance-app-backend.onrender.com](https://evista-finance-app-backend.onrender.com)
+- **GitHub Repository**: [https://github.com/Joffopiyo/evista-finance-app](https://github.com/Joffopiyo/evista-finance-app)
+
 ## 📋 Table of Contents
 
 - [Features](#-features)
