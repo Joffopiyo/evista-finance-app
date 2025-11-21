@@ -1,6 +1,6 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "Frontend",
+  "outputDirectory": "frontend",
   "installCommand": "npm install",
   "env": {
     "FRONTEND_URL": "@frontend_url"

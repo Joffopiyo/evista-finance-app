@@ -306,7 +306,7 @@ Financial Literacy app/
 │   ├── utils/
 │   │   └── seed.js            # Database seeding utility
 │   └── server.js              # Express server setup
-├── Frontend/                  # Frontend static files (served by Express)
+├── frontend/                  # Frontend static files (served by Express)
 │   ├── css/
 │   │   └── style.css          # Custom styles
 │   ├── js/

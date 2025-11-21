@@ -50,7 +50,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files from Frontend directory with proper MIME types
-app.use(express.static('Frontend', {
+app.use(express.static('frontend', {
   setHeaders: (res, path) => {
     if (path.endsWith('.wasm')) {
       res.set('Content-Type', 'application/wasm');
@@ -75,35 +75,35 @@ app.get('/api/health', (req, res) => {
 
 // Serve frontend routes
 app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: 'Frontend' });
+  res.sendFile('index.html', { root: 'frontend' });
 });
 
 app.get('/login', (req, res) => {
-  res.sendFile('login.html', { root: 'Frontend' });
+  res.sendFile('login.html', { root: 'frontend' });
 });
 
 app.get('/user-dashboard', (req, res) => {
-  res.sendFile('user-dashboard.html', { root: 'Frontend' });
+  res.sendFile('user-dashboard.html', { root: 'frontend' });
 });
 
 app.get('/admin-dashboard', (req, res) => {
-  res.sendFile('admin-dashboard.html', { root: 'Frontend' });
+  res.sendFile('admin-dashboard.html', { root: 'frontend' });
 });
 
 app.get('/budget', (req, res) => {
-  res.sendFile('budget.html', { root: 'Frontend' });
+  res.sendFile('budget.html', { root: 'frontend' });
 });
 
 app.get('/signup', (req, res) => {
-  res.sendFile('signup.html', { root: 'Frontend' });
+  res.sendFile('signup.html', { root: 'frontend' });
 });
 
 app.get('/courses', (req, res) => {
-  res.sendFile('courses.html', { root: 'Frontend' });
+  res.sendFile('courses.html', { root: 'frontend' });
 });
 
 app.get('/reports', (req, res) => {
-  res.sendFile('reports.html', { root: 'Frontend' });
+  res.sendFile('reports.html', { root: 'frontend' });
 });
 
 // 404 handler for API routes
