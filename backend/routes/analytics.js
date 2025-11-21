@@ -14,7 +14,7 @@ router.get('/summary', authMiddleware, async (req, res) => {
     const totalIncome = transactions
       .filter(t => t.type === 'income')
       .reduce((sum, t) => sum + t.amount, 0);
-    
+
     const totalExpense = transactions
       .filter(t => t.type === 'expense')
       .reduce((sum, t) => sum + t.amount, 0);
@@ -22,9 +22,11 @@ router.get('/summary', authMiddleware, async (req, res) => {
     const savings = totalIncome - totalExpense;
 
     const courses = await Course.find({ isActive: true });
+    // TODO: Implement actual user-course progress tracking
+    // Currently using random progress as placeholder
     const coursesProgress = courses.map(course => ({
       title: course.title,
-      progress: Math.floor(Math.random() * 100),
+      progress: Math.floor(Math.random() * 100), // Temporary placeholder
       duration: course.duration
     }));
 

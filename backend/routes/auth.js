@@ -17,22 +17,22 @@ router.post('/signup', signupValidation, async (req, res) => {
       return res.status(409).json({ error: 'User already exists with this email', code: 409 });
     }
 
-    // In the signup route, after user creation:
-// Make first user admin automatically
-const userCount = await User.countDocuments();
-if (userCount === 1) {
-  user.role = 'admin';
-  await user.save();
-  console.log('First user automatically assigned admin role:', user.email);
-}
-
+    // Hash password and create user
     const passwordHash = await bcrypt.hash(password, 10);
     const user = new User({ email, passwordHash });
+
+    // Make first user admin automatically
+    const userCount = await User.countDocuments();
+    if (userCount === 0) {  // Check if this is the first user (before saving)
+      user.role = 'admin';
+      console.log('First user automatically assigned admin role:', user.email);
+    }
+
     await user.save();
 
     const token = jwt.sign(
-      { id: user._id, email: user.email }, 
-      process.env.JWT_SECRET, 
+      { id: user._id, email: user.email },
+      process.env.JWT_SECRET,
       { expiresIn: '1h' }
     );
 
@@ -66,8 +66,8 @@ router.post('/login', loginValidation, async (req, res) => {
     }
 
     const token = jwt.sign(
-      { id: user._id, email: user.email }, 
-      process.env.JWT_SECRET, 
+      { id: user._id, email: user.email },
+      process.env.JWT_SECRET,
       { expiresIn: '1h' }
     );
 
