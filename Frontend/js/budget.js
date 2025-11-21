@@ -25,7 +25,13 @@ class BudgetManager {
         throw new Error('Failed to load transactions');
       }
 
-      this.transactions = await response.json();
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        this.transactions = await response.json();
+      } else {
+        this.transactions = [];
+      }
+
       this.renderTransactions();
       this.updateTotals();
       this.renderChart();
@@ -44,8 +50,13 @@ class BudgetManager {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to add transaction');
+        let errorMessage = 'Failed to add transaction';
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
+        }
+        throw new Error(errorMessage);
       }
 
       const newTransaction = await response.json();
@@ -53,11 +64,11 @@ class BudgetManager {
       this.renderTransactions();
       this.updateTotals();
       this.renderChart();
-      
+
       // Clear form
       document.getElementById('transactionForm').reset();
       this.hideModal();
-      
+
       this.showSuccess('Transaction added successfully');
     } catch (error) {
       console.error('Error adding transaction:', error);
@@ -84,7 +95,7 @@ class BudgetManager {
       this.renderTransactions();
       this.updateTotals();
       this.renderChart();
-      
+
       this.showSuccess('Transaction deleted successfully');
     } catch (error) {
       console.error('Error deleting transaction:', error);
@@ -127,11 +138,11 @@ class BudgetManager {
     const totalIncome = this.transactions
       .filter(t => t.type === 'income')
       .reduce((sum, t) => sum + t.amount, 0);
-    
+
     const totalExpense = this.transactions
       .filter(t => t.type === 'expense')
       .reduce((sum, t) => sum + t.amount, 0);
-    
+
     const savings = totalIncome - totalExpense;
 
     document.getElementById('totalIncome').textContent = totalIncome.toFixed(2);

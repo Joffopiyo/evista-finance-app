@@ -24,7 +24,14 @@ class Dashboard {
         throw new Error('Failed to load analytics');
       }
 
-      const data = await response.json();
+      let data;
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        throw new Error('Invalid server response');
+      }
+
       this.updateDashboard(data);
       this.renderChart(data);
     } catch (error) {
@@ -36,8 +43,13 @@ class Dashboard {
   async loadCourses() {
     try {
       const response = await fetch('/api/courses');
-      const courses = await response.json();
-      this.renderCourses(courses);
+      if (response.ok) {
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          const courses = await response.json();
+          this.renderCourses(courses);
+        }
+      }
     } catch (error) {
       console.error('Error loading courses:', error);
     }
@@ -53,12 +65,12 @@ class Dashboard {
     if (savingsValue) savingsValue.textContent = `$${data.savings.toFixed(2)}`;
     if (expensesValue) expensesValue.textContent = `$${data.totalExpense.toFixed(2)}`;
     if (incomeValue) incomeValue.textContent = `$${data.totalIncome.toFixed(2)}`;
-    
+
     // Calculate average course progress
-    const avgProgress = data.coursesProgress.length > 0 
-      ? data.coursesProgress.reduce((sum, course) => sum + course.progress, 0) / data.coursesProgress.length 
+    const avgProgress = data.coursesProgress.length > 0
+      ? data.coursesProgress.reduce((sum, course) => sum + course.progress, 0) / data.coursesProgress.length
       : 0;
-    
+
     if (courseProgress) courseProgress.textContent = `${Math.round(avgProgress)}%`;
   }
 
@@ -90,7 +102,7 @@ class Dashboard {
           },
           tooltip: {
             callbacks: {
-              label: function(context) {
+              label: function (context) {
                 return `${context.label}: $${context.raw.toFixed(2)}`;
               }
             }

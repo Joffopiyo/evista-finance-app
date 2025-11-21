@@ -13,13 +13,20 @@ class AuthService {
         },
         body: JSON.stringify({ email, password }),
       });
-  
-      const data = await response.json();
-  
+
+      let data;
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        if (!response.ok) throw new Error(`Server error: ${response.status} ${response.statusText}`);
+        data = {};
+      }
+
       if (!response.ok) {
         throw new Error(data.error || 'Signup failed');
       }
-  
+
       this.setAuthData(data.token, data.user);
       return data;
     } catch (error) {
@@ -38,7 +45,14 @@ class AuthService {
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await response.json();
+      let data;
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        if (!response.ok) throw new Error(`Server error: ${response.status} ${response.statusText}`);
+        data = {};
+      }
 
       if (!response.ok) {
         throw new Error(data.error || 'Login failed');
@@ -69,7 +83,14 @@ class AuthService {
         return null;
       }
 
-      const data = await response.json();
+      let data;
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        return null;
+      }
+
       this.user = data.user;
       localStorage.setItem('evista_user', JSON.stringify(data.user));
       return data.user;
