@@ -67,33 +67,6 @@ app.use('/api/transactions', transactionRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/courses', courseRoutes);
-
-// Health check
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', timestamp: new Date().toISOString() });
-});
-
-// Debug endpoint to check environment variables (Remove in production)
-app.get('/api/debug-config', (req, res) => {
-  res.json({
-    env_check: {
-      JWT_SECRET_EXISTS: !!process.env.JWT_SECRET,
-      MONGODB_URI_EXISTS: !!process.env.MONGODB_URI,
-      FRONTEND_URL_EXISTS: !!process.env.FRONTEND_URL,
-      NODE_ENV: process.env.NODE_ENV
-    }
-  });
-});
-
-// Serve frontend routes
-app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: 'frontend' });
-});
-
-app.get('/login', (req, res) => {
-  res.sendFile('login.html', { root: 'frontend' });
-});
-
 app.get('/user-dashboard', (req, res) => {
   res.sendFile('user-dashboard.html', { root: 'frontend' });
 });
