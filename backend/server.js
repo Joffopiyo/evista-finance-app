@@ -67,6 +67,18 @@ app.use('/api/transactions', transactionRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/courses', courseRoutes);
+
+// Health check endpoint (doesn't require database)
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'ok',
+    message: 'Server is running',
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
+// HTML routes
 app.get('/user-dashboard', (req, res) => {
   res.sendFile('user-dashboard.html', { root: 'frontend' });
 });
