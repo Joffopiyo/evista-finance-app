@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,20 +14,24 @@
             color: white;
             padding: 100px 0;
         }
+
         .feature-card {
             transition: transform 0.3s;
             border: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .feature-card:hover {
             transform: translateY(-5px);
         }
+
         .navbar-brand {
             font-weight: bold;
             font-size: 1.5rem;
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -35,16 +40,19 @@
                 <i class="fas fa-piggy-bank me-2"></i>Evista Finance
             </a>
             <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="/login" id="loginBtn">Login</a>
+                <a class="nav-link" href="/login.html" id="loginBtn">Login</a>
                 <div class="nav-item dropdown" id="userMenu" style="display: none;">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         <span id="userEmail"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/user-dashboard">Dashboard</a></li>
-                        <li><a class="dropdown-item" href="/budget">Budget</a></li>
-                        <li id="adminLink" style="display: none;"><a class="dropdown-item" href="/admin-dashboard">Admin</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/user-dashboard.html">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="/budget.html">Budget</a></li>
+                        <li id="adminLink" style="display: none;"><a class="dropdown-item"
+                                href="/admin-dashboard.html">Admin</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
                     </ul>
                 </div>
@@ -56,8 +64,9 @@
     <section class="hero-section text-center">
         <div class="container">
             <h1 class="display-4 fw-bold mb-4">Master Your Financial Future</h1>
-            <p class="lead mb-4">Join thousands learning to budget, save, and invest for sustainable development goals</p>
-            <a href="/login" class="btn btn-light btn-lg me-2">Get Started</a>
+            <p class="lead mb-4">Join thousands learning to budget, save, and invest for sustainable development goals
+            </p>
+            <a href="/login.html" class="btn btn-light btn-lg me-2">Get Started</a>
             <a href="#features" class="btn btn-outline-light btn-lg">Learn More</a>
         </div>
     </section>
@@ -77,7 +86,8 @@
                         <div class="card-body text-center p-4">
                             <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
                             <h5 class="card-title">Smart Budgeting</h5>
-                            <p class="card-text">Track income and expenses with intuitive tools and visual analytics.</p>
+                            <p class="card-text">Track income and expenses with intuitive tools and visual analytics.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -86,7 +96,8 @@
                         <div class="card-body text-center p-4">
                             <i class="fas fa-graduation-cap fa-3x text-success mb-3"></i>
                             <h5 class="card-title">Expert Courses</h5>
-                            <p class="card-text">Learn from comprehensive courses on personal finance and investment.</p>
+                            <p class="card-text">Learn from comprehensive courses on personal finance and investment.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -135,7 +146,7 @@
                 const response = await fetch('/api/courses');
                 const courses = await response.json();
                 const previewContainer = document.getElementById('coursesPreview');
-                
+
                 if (previewContainer && courses.length > 0) {
                     previewContainer.innerHTML = courses.slice(0, 3).map(course => `
                         <div class="col-md-4">
@@ -163,4 +174,5 @@
         document.addEventListener('DOMContentLoaded', loadFeaturedCourses);
     </script>
 </body>
+
 </html>

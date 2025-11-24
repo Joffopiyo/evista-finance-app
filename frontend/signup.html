@@ -71,7 +71,7 @@
             try {
                 await authService.signup(email, password);
                 alert('Account created successfully! Redirecting to login...');
-                window.location.href = '/login';
+                window.location.href = '/login.html';
             } catch (error) {
                 errorDiv.textContent = error.message;
                 errorDiv.style.display = 'block';

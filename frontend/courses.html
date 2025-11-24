@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -20,11 +22,14 @@
                         <span id="userEmail"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/user-dashboard">Dashboard</a></li>
-                        <li><a class="dropdown-item" href="/budget">Budget</a></li>
-                        <li><a class="dropdown-item" href="/courses">Courses</a></li>
-                        <li id="adminLink" style="display: none;"><a class="dropdown-item" href="/admin-dashboard">Admin</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/user-dashboard.html">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="/budget.html">Budget</a></li>
+                        <li><a class="dropdown-item" href="/courses.html">Courses</a></li>
+                        <li id="adminLink" style="display: none;"><a class="dropdown-item"
+                                href="/admin-dashboard.html">Admin</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
                     </ul>
                 </div>
@@ -36,7 +41,8 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="mb-4">Financial Literacy Courses</h1>
-                <p class="lead mb-5">Enhance your financial knowledge with our comprehensive courses designed for all skill levels.</p>
+                <p class="lead mb-5">Enhance your financial knowledge with our comprehensive courses designed for all
+                    skill levels.</p>
             </div>
         </div>
 
@@ -55,7 +61,7 @@
 
             async init() {
                 if (!authService.isAuthenticated()) {
-                    window.location.href = '/login';
+                    window.location.href = '/login.html';
                     return;
                 }
 
@@ -118,7 +124,7 @@
             startCourse(courseId, courseTitle) {
                 // For demo purposes - in a real app, this would show course content
                 alert(`Starting course: ${courseTitle}\n\nThis feature would include:\n• Video lessons\n• Reading materials\n• Interactive quizzes\n• Progress tracking\n• Certificates of completion`);
-                
+
                 // You can expand this to:
                 // 1. Show a course player modal
                 // 2. Track user progress in database
@@ -144,4 +150,5 @@
         const coursesManager = new CoursesManager();
     </script>
 </body>
+
 </html>

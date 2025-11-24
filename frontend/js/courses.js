@@ -5,7 +5,7 @@ class CoursesManager {
 
     async init() {
         if (!authService.isAuthenticated()) {
-            window.location.href = '/login';
+            window.location.href = '/login.html';
             return;
         }
 
@@ -58,7 +58,7 @@ class CoursesManager {
     startCourse(courseId) {
         // For now, just show an alert. You can expand this to show course content
         alert('Course starting feature coming soon! This would show course lessons and content.');
-        
+
         // Future implementation could:
         // 1. Show course modules
         // 2. Track progress

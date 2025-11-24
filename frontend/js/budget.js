@@ -7,7 +7,7 @@ class BudgetManager {
 
   async init() {
     if (!authService.isAuthenticated()) {
-      window.location.href = '/login';
+      window.location.href = '/login.html';
       return;
     }
 

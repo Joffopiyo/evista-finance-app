@@ -17,7 +17,7 @@ class LoginManager {
 
   async handleLogin(e) {
     e.preventDefault();
-    
+
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const submitBtn = document.getElementById('loginBtn');
@@ -43,9 +43,9 @@ class LoginManager {
   redirectToDashboard() {
     const user = authService.user;
     if (user.role === 'admin') {
-      window.location.href = '/admin-dashboard';
+      window.location.href = '/admin-dashboard.html';
     } else {
-      window.location.href = '/user-dashboard';
+      window.location.href = '/user-dashboard.html';
     }
   }
 }

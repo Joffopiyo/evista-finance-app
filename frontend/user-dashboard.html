@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,26 +13,32 @@
         .stat-card {
             border: none;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
         }
+
         .stat-card:hover {
             transform: translateY(-5px);
         }
+
         .card-income {
             border-left: 4px solid #4CAF50;
         }
+
         .card-expense {
             border-left: 4px solid #F44336;
         }
+
         .card-savings {
             border-left: 4px solid #2196F3;
         }
+
         .card-progress {
             border-left: 4px solid #FF9800;
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -45,12 +52,15 @@
                         <span id="userEmail"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/user-dashboard">Dashboard</a></li>
-                        <li><a class="dropdown-item" href="/budget">Budget</a></li>
-                        <li><a class="dropdown-item" href="/courses">Courses</a></li>
-                        <li><a class="dropdown-item" href="/reports">Reports</a></li>
-                        <li id="adminLink" style="display: none;"><a class="dropdown-item" href="/admin-dashboard">Admin</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/user-dashboard.html">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="/budget.html">Budget</a></li>
+                        <li><a class="dropdown-item" href="/courses.html">Courses</a></li>
+                        <li><a class="dropdown-item" href="/reports.html">Reports</a></li>
+                        <li id="adminLink" style="display: none;"><a class="dropdown-item"
+                                href="/admin-dashboard.html">Admin</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
                     </ul>
                 </div>
@@ -139,7 +149,7 @@
                         <h5 class="card-title mb-0">Quick Actions</h5>
                     </div>
                     <div class="card-body">
-                        <a href="/budget" class="btn btn-primary w-100 mb-2" id="budgetLink">
+                        <a href="/budget.html" class="btn btn-primary w-100 mb-2" id="budgetLink">
                             <i class="fas fa-wallet me-2"></i>Manage Budget
                         </a>
                         <button class="btn btn-outline-secondary w-100 mb-2">
@@ -170,4 +180,5 @@
     <script src="js/auth.js"></script>
     <script src="js/dashboard.js"></script>
 </body>
+
 </html>

@@ -6,12 +6,12 @@ class AdminDashboard {
 
   async init() {
     if (!authService.isAuthenticated()) {
-      window.location.href = '/login';
+      window.location.href = '/login.html';
       return;
     }
 
     if (!authService.isAdmin()) {
-      window.location.href = '/user-dashboard';
+      window.location.href = '/user-dashboard.html';
       return;
     }
 
