@@ -9,7 +9,7 @@ A comprehensive full-stack financial literacy application designed to help users
 
 ## 🌐 Live Deployment
 
-- **Frontend**: [https://financial-literacy-ds7js8mw6-joffopiyos-projects.vercel.app](https://financial-literacy-ds7js8mw6-joffopiyos-projects.vercel.app)
+- **Frontend**: [https://evista-finance-app.vercel.app](https://evista-finance-app.vercel.app)
 - **Backend API**: [https://evista-finance-app-backend.onrender.com](https://evista-finance-app-backend.onrender.com)
 - **GitHub Repository**: [https://github.com/Joffopiyo/evista-finance-app](https://github.com/Joffopiyo/evista-finance-app)
 
